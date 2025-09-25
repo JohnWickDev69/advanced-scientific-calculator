@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a4d59">
+</head>
+<body>
+    <div class="background-gradient"></div>
+
+    <div class="calculator-container">
+        <div class="calculator glass-panel">
+            <!-- Header -->
+            <div class="header glass-element">
+                <h1>Scientific Calculator</h1>
+                <div class="mode-toggles">
+                    <button id="angleMode" class="mode-btn glass-btn">DEG</button>
+                    <button id="displayMode" class="mode-btn glass-btn">DEC</button>
+                    <button id="historyBtn" class="mode-btn glass-btn">HIST</button>
+                </div>
+            </div>
+
+            <!-- Display -->
+            <div class="display-container glass-element">
+                <div class="expression-display" id="expressionDisplay"></div>
+                <div class="main-display" id="mainDisplay">0</div>
+                <div class="memory-indicator" id="memoryIndicator" style="display: none;">M</div>
+            </div>
+
+            <!-- Function Categories -->
+            <div class="category-tabs glass-element">
+                <button class="category-tab active" data-category="basic">Basic</button>
+                <button class="category-tab" data-category="trig">Trig</button>
+                <button class="category-tab" data-category="log">Log</button>
+                <button class="category-tab" data-category="advanced">Advanced</button>
+                <button class="category-tab" data-category="matrix">Matrix</button>
+            </div>
+
+            <!-- Button Grid -->
+            <div class="button-grid glass-element">
+                <!-- Basic Category -->
+                <div class="button-category active" data-category="basic">
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="clear">C</button>
+                        <button class="function-btn glass-btn" data-function="clearAll">AC</button>
+                        <button class="function-btn glass-btn" data-function="backspace">⌫</button>
+                        <button class="operation-btn glass-btn accent" data-function="divide">÷</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="number-btn glass-btn" data-value="7">7</button>
+                        <button class="number-btn glass-btn" data-value="8">8</button>
+                        <button class="number-btn glass-btn" data-value="9">9</button>
+                        <button class="operation-btn glass-btn accent" data-function="multiply">×</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="number-btn glass-btn" data-value="4">4</button>
+                        <button class="number-btn glass-btn" data-value="5">5</button>
+                        <button class="number-btn glass-btn" data-value="6">6</button>
+                        <button class="operation-btn glass-btn accent" data-function="subtract">-</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="number-btn glass-btn" data-value="1">1</button>
+                        <button class="number-btn glass-btn" data-value="2">2</button>
+                        <button class="number-btn glass-btn" data-value="3">3</button>
+                        <button class="operation-btn glass-btn accent" data-function="add">+</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="parentheses">()</button>
+                        <button class="number-btn glass-btn" data-value="0">0</button>
+                        <button class="number-btn glass-btn" data-value=".">.</button>
+                        <button class="equals-btn glass-btn primary">=</button>
+                    </div>
+                </div>
+
+                <!-- Trigonometric Category -->
+                <div class="button-category" data-category="trig">
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="sin">sin</button>
+                        <button class="function-btn glass-btn" data-function="cos">cos</button>
+                        <button class="function-btn glass-btn" data-function="tan">tan</button>
+                        <button class="function-btn glass-btn" data-function="pi">π</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="asin">sin⁻¹</button>
+                        <button class="function-btn glass-btn" data-function="acos">cos⁻¹</button>
+                        <button class="function-btn glass-btn" data-function="atan">tan⁻¹</button>
+                        <button class="function-btn glass-btn" data-function="e">e</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="sinh">sinh</button>
+                        <button class="function-btn glass-btn" data-function="cosh">cosh</button>
+                        <button class="function-btn glass-btn" data-function="tanh">tanh</button>
+                        <button class="function-btn glass-btn" data-function="deg2rad">→rad</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="sec">sec</button>
+                        <button class="function-btn glass-btn" data-function="csc">csc</button>
+                        <button class="function-btn glass-btn" data-function="cot">cot</button>
+                        <button class="function-btn glass-btn" data-function="rad2deg">→deg</button>
+                    </div>
+                </div>
+
+                <!-- Logarithmic Category -->
+                <div class="button-category" data-category="log">
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="log">log</button>
+                        <button class="function-btn glass-btn" data-function="ln">ln</button>
+                        <button class="function-btn glass-btn" data-function="log2">log₂</button>
+                        <button class="function-btn glass-btn" data-function="exp">eˣ</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="pow10">10ˣ</button>
+                        <button class="function-btn glass-btn" data-function="pow2">2ˣ</button>
+                        <button class="function-btn glass-btn" data-function="pow">xʸ</button>
+                        <button class="function-btn glass-btn" data-function="sqrt">√x</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="cbrt">∛x</button>
+                        <button class="function-btn glass-btn" data-function="nthroot">ʸ√x</button>
+                        <button class="function-btn glass-btn" data-function="square">x²</button>
+                        <button class="function-btn glass-btn" data-function="cube">x³</button>
+                    </div>
+                </div>
+
+                <!-- Advanced Category -->
+                <div class="button-category" data-category="advanced">
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="factorial">n!</button>
+                        <button class="function-btn glass-btn" data-function="permutation">nPr</button>
+                        <button class="function-btn glass-btn" data-function="combination">nCr</button>
+                        <button class="function-btn glass-btn" data-function="abs">|x|</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="floor">floor</button>
+                        <button class="function-btn glass-btn" data-function="ceil">ceil</button>
+                        <button class="function-btn glass-btn" data-function="round">round</button>
+                        <button class="function-btn glass-btn" data-function="random">rand</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="mod">mod</button>
+                        <button class="function-btn glass-btn" data-function="gcd">GCD</button>
+                        <button class="function-btn glass-btn" data-function="lcm">LCM</button>
+                        <button class="function-btn glass-btn" data-function="percent">%</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn memory" data-function="ms">MS</button>
+                        <button class="function-btn glass-btn memory" data-function="mr">MR</button>
+                        <button class="function-btn glass-btn memory" data-function="mc">MC</button>
+                        <button class="function-btn glass-btn memory" data-function="mplus">M+</button>
+                    </div>
+                </div>
+
+                <!-- Matrix Category -->
+                <div class="button-category" data-category="matrix">
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="matrix2x2">2×2</button>
+                        <button class="function-btn glass-btn" data-function="matrix3x3">3×3</button>
+                        <button class="function-btn glass-btn" data-function="matrixAdd">A+B</button>
+                        <button class="function-btn glass-btn" data-function="matrixMult">A×B</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="function-btn glass-btn" data-function="determinant">det</button>
+                        <button class="function-btn glass-btn" data-function="inverse">A⁻¹</button>
+                        <button class="function-btn glass-btn" data-function="transpose">Aᵀ</button>
+                        <button class="function-btn glass-btn" data-function="trace">tr</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Panel -->
+        <div id="historyPanel" class="history-panel glass-element" style="display: none;">
+            <div class="history-header">
+                <h3>Calculation History</h3>
+                <button id="clearHistory" class="glass-btn">Clear All</button>
+            </div>
+            <div id="historyList" class="history-list"></div>
+        </div>
+
+        <!-- Matrix Input Modal -->
+        <div id="matrixModal" class="modal" style="display: none;">
+            <div class="modal-content glass-panel">
+                <div class="modal-header">
+                    <h3>Matrix Input</h3>
+                    <button class="close-btn glass-btn">&times;</button>
+                </div>
+                <div id="matrixInputGrid" class="matrix-input-grid"></div>
+                <div class="modal-buttons">
+                    <button id="matrixSubmit" class="glass-btn primary">Submit</button>
+                    <button id="matrixCancel" class="glass-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => console.log('SW registered'))
+                .catch(error => console.log('SW registration failed'));
+        }
+    </script>
+</body>
+</html>
